@@ -1,0 +1,23 @@
+<form [formGroup]="theForm" #formRef="ngForm"
+      (ngSubmit)="onSubmit(theForm.value)">
+
+  <div>
+    <label for="name">Name</label>
+    <input type="text" id="name"
+           formControlName="name">
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input type="password" id="password"
+           formControlName="password">
+  </div>
+
+  <button type="submit">Submit</button>
+
+</form>
+
+<h3>Debug:</h3>
+Valid: {{formRef.valid}}
+<br>
+Errors: {{formRef.errors | json}}

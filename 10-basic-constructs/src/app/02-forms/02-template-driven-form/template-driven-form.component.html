@@ -1,0 +1,25 @@
+<form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
+
+    <fieldset ngModelGroup="login">
+        <input name="username"
+               type="text"
+               required
+               minlength="3"
+               [(ngModel)]="username"
+               #usernameRef="ngModel">
+        <div *ngIf="usernameRef.errors?.required">This field is required</div>
+
+        <br>
+        <input name="password" type="password" ngModel>
+    </fieldset>
+
+    <br>
+    <button type="submit">Submit!</button>
+</form>
+<hr>
+Debug:
+<br>
+{{formRef.valid}}
+<br>
+{{formRef.value | json}}
+

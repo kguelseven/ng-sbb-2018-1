@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+Id:
+<input id="txtId" type="text">
+
+<br>
+
+Title:
+<input id="txtTitle" type="text">
+
+Completed:
+<input id="chkCompleted" type="checkbox">
+
+<br>
+
+<button id="btnGet">Get</button>
+<button id="btnPost">Post</button>
+<button id="btnPut">Put</button>
+<button id="btnDelete">Delete</button>
+
+
+<pre id="content"></pre>
+
+<script src="https://unpkg.com/rxjs@5.5.6/bundles/Rx.js"></script>
+<script>
+
+    const API_URL = 'http://localhost:3456/todos';
+
+    const txtId = document.getElementById('txtId');
+    const txtTitle = document.getElementById('txtTitle');
+    const chkCompleted = document.getElementById('chkCompleted');
+    const btnGet = document.getElementById('btnGet');
+    const btnPost = document.getElementById('btnPost');
+    const btnPut = document.getElementById('btnPut');
+    const btnDelete = document.getElementById('btnDelete');
+    const contentDiv = document.getElementById('content');
+
+    btnGet.addEventListener('click', get);
+    btnPost.addEventListener('click', post);
+    btnPut.addEventListener('click', put);
+    btnDelete.addEventListener('click', del);
+
+    function get(){
+      Rx.Observable
+        .ajax(API_URL)
+        .map(r => r.response.data)
+        .subscribe(data => contentDiv.innerText = JSON.stringify(data, null, 5))
+    }
+
+    function post(){
+      Rx.Observable
+        .ajax({
+          url: API_URL,
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
+          body: { title: txtTitle.value, completed: chkCompleted.checked }
+        })
+        .subscribe(
+          v => console.log(v.response.data)
+        );
+
+    }
+
+    function put(){
+
+      Rx.Observable
+        .ajax({
+          url: `${API_URL}/${txtId.value}`,
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json'},
+          body: { title: txtTitle.value, completed: chkCompleted.checked }
+        })
+        .subscribe();
+    }
+
+    function del(){
+      Rx.Observable
+        .ajax({
+          url: `${API_URL}/${txtId.value}`,
+          method: 'DELETE'
+        })
+        .subscribe();
+    }
+
+
+</script>
+</body>
+</html>

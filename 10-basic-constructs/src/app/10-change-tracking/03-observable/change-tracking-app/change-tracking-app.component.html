@@ -1,0 +1,17 @@
+<h1>Observable Service</h1>
+
+<p>
+  Manual: {{service.serviceState.counterManual}}
+  <button (click)="incrementServiceCounter()">Update</button>
+</p>
+
+<p>
+  Programmatic: {{service.serviceState.counterProgrammatic }}
+</p>
+
+
+<div class="container">
+  <aw-observince-child [serviceState]="service.state$ | async" (increment)="incrementServiceCounter()" ></aw-observince-child>
+  <aw-observince-child [serviceState]="service.state$ | async" (increment)="incrementServiceCounter()"></aw-observince-child>
+</div>
+

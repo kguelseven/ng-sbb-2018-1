@@ -1,0 +1,17 @@
+Make sure that the todo server is running!
+<br>
+<hr>
+Id:<input type="text" [(ngModel)]="ratingId"/>
+<br>
+Todo Text:<input type="text" [(ngModel)]="todoText"/>
+<br>
+Completed: <input type="checkbox" [(ngModel)]="completed"/>
+<br>
+<br>
+<button (click)="getTodos()">Get</button>
+<button (click)="postTodo()">POST</button>
+<button (click)="putTodo()">PUT</button>
+<button (click)="deleteTodo()">DELETE</button>
+<br>
+<br>
+<pre>{{ratings | async | json}}</pre>

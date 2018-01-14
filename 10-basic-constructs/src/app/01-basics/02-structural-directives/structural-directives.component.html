@@ -1,0 +1,63 @@
+<h4>Structural-Directives</h4>
+
+<label>Show district:</label>
+<input type="checkbox" [(ngModel)]="showDistrict"/>
+
+<h5>Characters:</h5>
+<ul>
+  <li *ngFor="let character of characters">
+    <span>{{character.firstName}}</span>
+    <span>{{character.lastName}}</span>
+    <span *ngIf="showDistrict">{{character.district}}</span>
+    <span [ngSwitch]="character.emotion">
+      <span *ngSwitchCase="Emotion.InLove">❤️</span>
+      <span *ngSwitchCase="Emotion.Angry">🔪</span>
+      <span *ngSwitchCase="Emotion.Sad">💧</span>
+      <span *ngSwitchDefault>⁉️</span>
+    </span>
+  </li>
+</ul>
+
+<!--DESUGARED SYNTAX SHOWING THE USE OF NG-TEMPLATE-->
+<!--<ul>-->
+<!--<ng-template ngFor let-character [ngForOf]="characters">-->
+<!--<li>-->
+<!--<span>{{character.firstName}}</span>-->
+<!--<span>{{character.lastName}}</span>-->
+<!--<ng-template [ngIf]="showDistrict">-->
+<!--<span>{{character.district}}</span>-->
+<!--</ng-template>-->
+<!--</li>-->
+<!--</ng-template>-->
+<!--</ul>-->
+
+
+<!--USING NG-IF/ELSE-->
+<!--<ul>-->
+  <!--<li *ngFor="let character of characters">-->
+    <!--<span>{{character.firstName}}</span>-->
+    <!--<span>{{character.lastName}}</span>-->
+    <!--<span *ngIf="showDistrict">{{character.district}}</span>-->
+    <!--<span *ngIf="character.emotion === Emotion.InLove; else elseBlock">❤️</span>-->
+    <!--<ng-template #elseBlock>⁉️</ng-template>-->
+  <!--</li>-->
+<!--</ul>-->
+
+
+<!--USING TRACK-BY-->
+<!--<ul>-->
+  <!--<li *ngFor="let character of characters; trackBy:trackByFirstName">-->
+    <!--<aw-test-directive></aw-test-directive>-->
+    <!--<span>{{character.firstName}}</span>-->
+    <!--<span>{{character.lastName}}</span>-->
+    <!--<span *ngIf="showDistrict">{{character.district}}</span>-->
+    <!--<span [ngSwitch]="character.emotion">-->
+      <!--<span *ngSwitchCase="Emotion.InLove">❤️</span>-->
+      <!--<span *ngSwitchCase="Emotion.Angry">🔪</span>-->
+      <!--<span *ngSwitchCase="Emotion.Sad">💧</span>-->
+      <!--<span *ngSwitchDefault>⁉️</span>-->
+    <!--</span>-->
+  <!--</li>-->
+<!--</ul>-->
+
+<!--<button (click)="reload()">Reload</button>-->

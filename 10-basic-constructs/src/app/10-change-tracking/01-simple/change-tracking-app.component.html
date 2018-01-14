@@ -1,0 +1,19 @@
+<h1>Change Tracking</h1>
+<h3>Manual</h3>
+<p>
+  Current time from component: {{componentState.counterManual}}
+  <button (click)="incrementComponentCounter()">Update</button>
+</p>
+<p>
+  Current time from service: {{service.state.counterManual }}
+  <button (click)="incrementServiceCounter()">Update</button>
+</p>
+
+
+<h3>Programmatic</h3>
+<p>
+  Current time from component: {{componentState.counterProgrammatic }}
+</p>
+<p>
+  Current time from service: {{service.state.counterProgrammatic }}
+</p>

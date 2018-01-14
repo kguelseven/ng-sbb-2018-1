@@ -1,0 +1,11 @@
+<input type="text"
+       required
+       minlength="3"
+       [(ngModel)]="username"
+       #usernameRef="ngModel">
+<div *ngIf="usernameRef.errors?.required">This field is required</div>
+<hr>
+<h3>Debug:</h3>
+Valid: {{usernameRef.valid}}
+<br>
+Errors: {{usernameRef.errors | json}}

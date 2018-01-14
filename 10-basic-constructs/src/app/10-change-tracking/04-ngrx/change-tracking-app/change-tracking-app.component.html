@@ -1,0 +1,12 @@
+<h1>Ngrx</h1>
+
+
+<div *ngIf="state$ | async as state">
+  <div>
+    Manual: {{state.counterManual}}
+    <button (click)="increaseManualCounter()">Increase</button>
+  </div>
+  <div>
+    Programmatic: {{state.counterProgrammatic}}
+  </div>
+</div>
