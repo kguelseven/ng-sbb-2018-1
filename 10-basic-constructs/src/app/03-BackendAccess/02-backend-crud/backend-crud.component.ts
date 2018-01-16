@@ -33,7 +33,9 @@ export class BackendCrudComponent {
 
     this.http
       .post(BACKEND_URL, todo)
-      .subscribe();
+      .subscribe(
+        response => console.log(response)
+      );
   }
 
   putTodo() {
@@ -42,13 +44,17 @@ export class BackendCrudComponent {
 
     this.http
       .put(`${BACKEND_URL}/${this.ratingId}`, rating)
-      .subscribe();
+      .subscribe(
+        response => console.log(response)
+      );
   }
 
   deleteTodo() {
     this.http
       .delete(`${BACKEND_URL}/${this.ratingId}`)
-      .subscribe();
+      .subscribe(
+        response => console.log(response)
+      );
   }
 
 }
