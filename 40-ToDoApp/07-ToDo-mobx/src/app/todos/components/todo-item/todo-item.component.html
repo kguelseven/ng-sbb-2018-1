@@ -1,0 +1,10 @@
+<li *mobxAutorun>
+  {{todo.title}}
+  <button *ngIf="todo.id" class="remove-button" (click)="removeToDo(todo)">
+    x
+  </button>
+</li>
+
+
+<!-- DEMO:-->
+<!-- delay the response on the server ... the x button is not displayed-->

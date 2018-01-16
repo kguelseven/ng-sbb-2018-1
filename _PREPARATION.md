@@ -59,13 +59,13 @@ We want to install some JavaScript development tools globally, so that they can 
 
 **OSX/Linux:** run the following commands:
 
-	sudo npm install -g lite-server http-server 
+	sudo npm install -g serve @anguler/cli 
 
 
 
 **Windows:** run the following commands in a Administrator command prompt:
 
-	npm install -g lite-server http-server 
+	npm install -g serve @anguler/cli 
 
 
 Ignore some scary warnings during the installation. Everything is ok, as long as the final output of the installation command is not an `npm ERR ...`
