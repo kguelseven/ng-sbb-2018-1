@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+<div id="content"></div>
+
+<script src="https://unpkg.com/@reactivex/rxjs/dist/global/Rx.js"></script>
+
+<script>
+  var stream = startAsyncOperation();
+
+  stream.subscribe(
+    value => document.getElementById("content").innerText += value,
+    error => console.log('Error: ' + error),
+    () => console.log('Completed!')
+  );
+
+  function startAsyncOperation() {
+    var stream = new Rx.Observable(
+      observer => {
+        setTimeout(
+          () => {
+            observer.next("This is the result!");
+            observer.complete();
+            // observer.error('Error!!!');
+          },
+          2000
+        );
+      }
+    );
+    return stream;
+
+    // DEMO: Stream with multiple values
+    // var stream = new Rx.Observable(
+    //   observer => {
+    //     setTimeout(() => observer.next("This is first value!"), 1000);
+    //     setTimeout(() => observer.next("This is second value!"), 2000);
+    //     setTimeout(() => observer.next("This is third value!"), 3000);
+    //     setTimeout(() => observer.complete(), 3000);
+    //   }
+    // );
+    // return stream;
+
+    // DEMO: Convenience funstion and operator
+    // return Rx.Observable.of("This is the result!").delay(2000);
+
+  }
+
+  // DEMO: Introduce subscription object and unsubscribe
+  // setTimeout(
+  //   () => subscription.unsubscribe(),
+  //   2100
+  // );
+
+
+
+
+</script>
+
+</body>
+
+</html>
