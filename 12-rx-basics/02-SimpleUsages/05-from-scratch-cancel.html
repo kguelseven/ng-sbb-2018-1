@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="tick">Tick!</button>
+<button id="unsubscribe">Unsubscribe</button>
+
+<script src="lib/Rx.min.js"></script>
+<script>
+    var observable = Rx.Observable.create(function subscribe(observer) {
+
+        const button = document.getElementById('tick');
+
+
+        button.addEventListener('click', handler);
+
+        // Return a function which will cancel the event stream
+        return () => button.removeEventListener('click', handler);
+
+        function handler(event){
+            console.log('Next!');
+            observer.next(event);
+        }
+
+    });
+
+    const subscription = observable.subscribe(x => console.log(x));
+
+
+    const unsubscribeButton = document.getElementById('unsubscribe');
+    unsubscribeButton.addEventListener('click', () => subscription.unsubscribe());
+
+</script>
+
+</body>
+</html>

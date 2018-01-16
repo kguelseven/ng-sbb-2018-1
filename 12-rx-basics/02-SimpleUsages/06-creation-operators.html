@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="tick">Tick!</button>
+
+<script src="lib/Rx.min.js"></script>
+<script>
+
+    const observable = Rx.Observable.of('Hi', 'how', 'are', 'you', '?');
+//    const observable = Rx.Observable.interval(1000);
+//    const observable = Rx.Observable.from([42, 84, 168]); // also: fromArray
+//    const observable = Rx.Observable.from(new Promise( resolve => setTimeout(() => resolve(42), 2000))); // also: fromPromise
+//    const observable = Rx.Observable.fromEvent(document.getElementById('tick'), 'click');
+
+
+    observable.subscribe(x => console.log(x));
+
+</script>
+
+</body>
+</html>
