@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="content1"></div>
+<div id="content2"></div>
+
+<script src="axios.min.js"></script>
+<script src="https://unpkg.com/@reactivex/rxjs/dist/global/Rx.js"></script>
+<script>
+
+  function api1() {
+    return Rx.Observable.of(42).delay(1500);
+  }
+
+  function api2() {
+    return Rx.Observable.of(43).delay(1000);
+  }
+
+  function api3() {
+    return Rx.Observable.of(44).delay(500);
+  }
+
+  stream = Rx.Observable.from([api1, api2, api3]);
+
+
+  stream.flatMap(x => x())
+    .subscribe(
+      value => document.getElementById('content1').textContent += value + " "
+    );
+
+  // stream
+  //   .concatMap(x => x())
+  //   .subscribe(
+  //     value => document.getElementById('content1').textContent += value + " "
+  //   );
+
+
+</script>
+</body>
+</html>
+
+
+<!--See: http://reactivex.io/documentation/operators/-->

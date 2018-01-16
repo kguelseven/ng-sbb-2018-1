@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="lib/Rx.min.js"></script>
+<script>
+    const observable = Rx.Observable.from([1, 2, 3, 4, 5]);
+//    const observable = Rx.Observable.interval(1000);
+
+    observable
+            .filter(v => v % 2 === 0)
+            .map(v => v * 2)
+            .subscribe(v => console.log(v));
+
+
+</script>
+
+</body>
+</html>
